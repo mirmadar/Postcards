@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security4"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${pageTitle}">Особое приглашение</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/slick.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__top">
+          <a class="logo" href="#">
+            <img class="logo__img" th:src="@{/images/logo.jpg}" alt="logo" width="200px" height="60px">
+          </a>
+          <div class="menu-burger__header">
+              <span></span>
+          </div>
+          <div class="menu">
+            <a class="menu__link" th:href="@{/public}">Главная</a>
+            <a class="menu__link" th:href="@{/public/services}">Услуги</a>
+            <a class="menu__link" href="/public#contacts">Контакты</a>
+            <a class="menu__link" th:href="@{/public/about_us}">О нас</a>
+          </div>
+        </div>
+        <div class="header__content">
+          <div class="header__text">
+            <h1 class="header__title">ОСОБОЕ ПРИГЛАШЕНИЕ</h1>
+            <h2 class="header__subtitle">Центр полиграфии в Ростове-на-Дону.</h2>
+            <a class="button" th:href="@{/public/services}">ПОДРОБНЕЕ ОБ УСЛУГАХ</a>
+          </div>
+
+          <div class="slideshow">
+            <div class="slideshow-item">
+                <img class="header__img" th:src="@{/images/1.jpg}" alt="">
+            </div>
+            <div class="slideshow-item">
+                <img class="header__img" th:src="@{/images/2.jpg}" alt="">
+            </div>
+            <div class="slideshow-item">
+                <img class="header__img" th:src="@{/images/3.jpg}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="carousel">
+      <div class="container">
+        <h2 class="title">НАШИ УСЛУГИ</h2>
+        <div class="carousel__inner">
+          <div th:each="service : ${services}">
+          <div class="carousel__item">
+            <div class="carousel__item-box">
+              <img class="carousel__item-img" th:src="@{'/carousel/' + ${service.image}}" alt="Image">
+              <h4 class="carousel__item-title" th:text="${service.name}"></h4>
+              <p th:text="${service.price}"></p>
+            </div>
+          </div>
+          </div>
+        </div>
+<!--        <div sec:authorize="hasRole('ADMIN')">-->
+<!--          <form action="/" method="post" enctype="multipart/form-data">-->
+<!--          <input type="text" name="name" placeholder="Название услуги">-->
+<!--          <input type="text" name="price" placeholder="Цена">-->
+<!--          <input type="file" name="image" accept="image/*">-->
+<!--          <button type="submit">Добавить услугу</button>-->
+<!--        </form>-->
+<!--        </div>-->
+      </div>
+    </section>
+
+    <section class="about_us">
+      <div class="container">
+        <h2 class="title">ПОЧЕМУ ИМЕННО МЫ?</h2>
+        <ol class="about_us_list">
+          <li class="about_us_item">
+            <p class="about_us_item-title">Компетентные сотрудники</p>
+          </li>
+          <li class="about_us_item">
+            <p class="about_us_item-title">Высокое качество работ</p>
+          </li>
+          <li class="about_us_item">
+            <p class="about_us_item-title">Выполнение работ любой сложности</p>
+          </li>
+          <li class="about_us_item">
+            <p class="about_us_item-title">Приемлемые цены</p>
+          </li>
+          <li class="about_us_item">
+            <p class="about_us_item-title">Наличие доставки</p>
+          </li>
+          <li class="about_us_item">
+            <p class="about_us_item-title">Индивидуальный подход к каждому клиенту</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="contacts">
+      <div class="container">
+        <div class="contacts__inner">
+          <div class="contacts__info">
+            <h2 class="title" id="contacts">КОНТАКТЫ</h2>
+            <ul class="contacts__list">
+              <li class="contacts__item">
+                <p class="contacts__item-title">Адрес</p>
+                <p class="contacts__item-text">
+                  г. Ростов-на-Дону, ул. Металлургическая 102/2, <br>
+                  корпус «ИЛК», офис 305 (со стороны ул. Плужной)
+                </p>
+              </li>
+
+              <li class="contacts__item">
+                <p class="contacts__item-title">График работы</p>
+                <p class="contacts__item-text">
+                  Пн-Пт: с 9:00 до 19:00, <br>
+                  Сб-Вс: выходной
+                </p>
+              </li>
+
+              <li class="contacts__item">
+                <p class="contacts__item-title">Телефон</p>
+                <p class="contacts__item-text">
+                  8 (863) 2-689-259 <br>
+                  8 (928) 279-01-08
+                </p>
+              </li>
+
+              <li class="contacts__item">
+                <p class="contacts__item-title">Почта</p>
+                <p class="contacts__item-text">
+                  Для заказа: 2790108@os-pr.ru <br>
+                  УФ печать: k@os-pr.ru <br>
+                  Дизайнер: designer@os-pr.ru
+                </p>
+              </li>
+            </ul>
+          </div>
+          <form class="contacts__form" action="/public/submit-request" method="post">
+            <h2 class="title contacts__title">ОСТАВИТЬ ЗАЯВКУ</h2>
+            <input class="contacts__input" type="text" name="name" placeholder="Как Вас зовут?">
+            <input class="contacts__input" type="text" name="phoneNumber" placeholder="Ваш номер телефона">
+            <button class="contacts__btn button" type="submit">Отправить заявку</button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+          <div class="footer__inner">
+            <h3>Особое приглашение</h3>
+            <p>Центр полиграфии в Ростове-на-Дону</p>
+          </div>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>

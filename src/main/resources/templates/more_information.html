@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">ОП | О нас</title>
+
+    <link rel="stylesheet" th:href="@{/css/service.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__top">
+          <a class="logo" href="#">
+            <img class="logo__img" th:src="@{/images/logo.jpg}" alt="logo" width="200px" height="60px">
+          </a>
+          <div class="menu-burger__header">
+              <span></span>
+          </div>
+          <div class="menu">
+            <a class="menu__link" th:href="@{/public}">Главная</a>
+            <a class="menu__link" th:href="@{/public/services}">Услуги</a>
+            <a class="menu__link" th:href="@{/public#contacts}">Контакты</a>
+            <a class="menu__link" th:href="@{/public/about_us}">О нас</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="container">
+        <h2 class="title">ОТКРЫТКИ</h2>
+        <div class="text">
+          <p>«Представьте» Вы держите в руках открытку ручной работы.
+            <br>
+            Только представьте сколько тепла, любви и творчества заложено в эту открытку.
+            <br>
+            Это не просто открытка напечатанная машиной.
+            <br>
+            Это открытка в которую вложена частичка души.
+            <br>
+            Каждая ее деталь индивидуальна и соответствует вашим желаниям.
+            <br>
+            Не упустите возможность приобрести частичку души, которая окутает ваших близких теплом и любовью.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio">
+      <div class="container">
+        <hr>
+        <h2 class="title portfolio">ПОРТФОЛИО</h2>
+        <div class="photos">
+          <img th:src="@{/images/postcards/1.jpg}" alt="">
+          <img th:src="@{/images/postcards/2.jpg}" alt="">
+          <img th:src="@{/images/postcards/3.jpg}" alt="">
+          <img th:src="@{/images/postcards/4.jpg}" alt="">
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+          <div class="footer__inner">
+            <h3>Особое приглашение</h3>
+            <p>Центр полиграфии в Ростове-на-Дону</p>
+          </div>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/about_us.js"></script>
+  </body>
+</html>

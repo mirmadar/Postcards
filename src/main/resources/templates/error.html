@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Page</title>
+</head>
+<body>
+<h1>Ошибка</h1>
+<p>При обработке вашего запроса произошла ошибка.</p>
+<p>
+  <span th:if="${param.errorType eq 'emptyImage'}">Изображение не может быть пустым.</span>
+
+  <span th:if="${param.errorType eq 'nullFileName'}">При загрузке изображения произошла ошибка.</span>
+</p>
+</body>
+</html>
