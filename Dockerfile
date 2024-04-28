@@ -10,5 +10,5 @@ ENV LC_ALL ru_RU.UTF-8
 # Установка Java
 FROM openjdk:20
 WORKDIR /demo
-COPY build/libs/ /demo/
+COPY demo.jar /demo/
 ENTRYPOINT ["java", "-jar", "demo.jar"]
