@@ -1,17 +1,18 @@
 version: '3'
 services:
   db:
-    image: mysql:latest
+    image: mirmad/postcards:db
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: postcards
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-    restart: always
     volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/:/docker-entrypoint-initdb.d/
+      - ./mysql_config:/etc/mysql/conf.d/
 
   app:
+    image: mirmad/postcards:app
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,6 +21,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/postcards
+      LANG: ru_RU.UTF-8
+      LANGUAGE: ru_RU:ru
+      LC_ALL: ru_RU.UTF-8
+      JAVA_OPTS: -Dfile.encoding=UTF-8
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/postcards?useUnicode=true&characterEncoding=utf-8
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password

@@ -1,5 +1,5 @@
 package com.example.demo.Controllers;
-import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/public/download")
@@ -23,12 +24,17 @@ public class FileDownloadController {
     }
 
     @GetMapping("/{filename:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String filename, HttpServletRequest request) {
+    public ResponseEntity<Resource> downloadFile(@PathVariable String filename) {
         try {
             Resource resource = resourceLoader.getResource("classpath:/files/" + filename);
-            String contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+            String contentType = "application/octet-stream"; // По умолчанию, если тип неизвестен
+
+            // Определение MIME-типа файла на основе его расширения
+            MediaType mediaType = MediaType.parseMediaType(Objects.requireNonNull(resource.getURL().openConnection().getContentType()));
+            contentType = mediaType.toString();
+
             return ResponseEntity.ok()
-                    .contentType(MediaType.parseMediaType(contentType))
+                    .contentType(mediaType)
                     .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
                     .body(resource);
         } catch (IOException ex) {
