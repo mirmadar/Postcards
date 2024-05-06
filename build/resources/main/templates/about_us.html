@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">О нас</title>
+
+    <link rel="stylesheet" href="/css/about_us.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__top">
+          <a class="logo" href="#">
+            <img class="logo__img" src="/images/logo.jpg" alt="logo" width="200px" height="60px">
+          </a>
+          <div class="menu-burger__header">
+              <span></span>
+          </div>
+          <div class="menu">
+            <a class="menu__link" th:href="@{/public}">Главная</a>
+            <a class="menu__link" th:href="@{/public/services}">Услуги</a>
+            <a class="menu__link" th:href="@{/public#contacts}">Контакты</a>
+            <a class="menu__link" th:href="@{/public/about_us}">О нас</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="container">
+        <div class="content_blocks">
+          <div class="title">
+            <h1>О НАС</h1>
+          </div>
+          <div class="block">
+            <div class="block__text">
+              <h2 class="block_title">Компания «Особое Приглашение»</h2>
+              <p class="smalltext">Миссия «Особого приглашения»: мы помогаем компаниям прибыльно развиваться, выстраивая персональные отношения с клиентами с помощью персональных коммуникаций и персональной полиграфии.
+                <br>
+                <br>
+                Цель «Особого приглашения»: в работе над каждым проектом с помощью индивидуального подхода, конструкции, формы, дизайна, применения различных полиграфических технологий и высокого качества изготовления донести информацию в нужном эмоциональном ключе персонально каждому клиенту.</p>
+            </div>
+            <img class="block__img1" src="/images/team.jpg">
+          </div>
+          <div class="block">
+            <img class="block__img2" src="/images/document.jpg">
+            <div class="block__text">
+              <h2 class="block_title">«Особое приглашение» — знак качества</h2>
+              <p class="smalltext">«Особое приглашение» - это официально зарегистрированная торговая марка. Все изделия и продукты под маркой «Особое приглашение» обладают оригинальными свойствами и безукоризненным качеством. Остерегайтесь подделок! Обращайтесь к нам напрямую!
+                <br>
+                <br>
+                На каждом изделии нашей компании мы размещаем торговый знак, потому что мы по праву гордимся качеством и эксклюзивностью нашей продукции и несём ответственность перед собой и перед нашими клиентами.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+          <div class="footer__inner">
+            <h3>Особое приглашение</h3>
+            <p>Центр полиграфии в Ростове-на-Дону</p>
+          </div>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/about_us.js"></script>
+  </body>
+</html>

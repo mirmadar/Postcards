@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .service {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>Список услуг</h2>
+<div th:each="service : ${services}" class="service">
+    <img th:src="@{'/carousel/' + ${service.image}}" alt="Image" style="width: 100px; height: auto;">
+    <p th:text="'id=' + ${service.id}"></p>
+    <p th:text="${service.name}"></p>
+    <p th:text="${service.price}"></p>
+</div>
+
+<h2>Создание услуги</h2>
+<form action="/admin/control_panel" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Название услуги"><br>
+    <input type="text" name="price" placeholder="Цена"><br>
+    <input type="file" name="image" accept="image/*"><br>
+    <button type="submit">Добавить услугу</button>
+</form>
+
+<h2>Обновление услуги</h2>
+<form th:action="@{'/admin/control_panel/update'}" method="post" enctype="multipart/form-data">
+    <label for="updateId">ID услуги:</label>
+    <input type="text" id="updateId" name="id" required>
+    <br>
+    <label for="updateName">Новое название услуги:</label>
+    <input type="text" id="updateName" name="name">
+    <br>
+    <label for="updatePrice">Новая цена услуги:</label>
+    <input type="text" id="updatePrice" name="price">
+    <br>
+    <label for="updateImage">Новое изображение:</label>
+    <input type="file" id="updateImage" name="image" accept="image/*">
+    <br>
+    <button type="submit">Обновить услугу</button>
+</form>
+
+<h2>Удаление услуги</h2>
+<form th:action="@{'/admin/control_panel/delete'}" method="post" enctype="multipart/form-data">
+    <label for="deleteId">ID услуги:</label>
+    <input type="text" id="deleteId" name="id" required><br>
+    <button type="submit">Удалить услугу</button>
+</form>
+
+<div>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Выход</button>
+    </form>
+</div>
+</body>
+</html>

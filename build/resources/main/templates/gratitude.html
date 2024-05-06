@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Заявка</title>
+
+    <link rel="stylesheet" th:href="@{/css/gratitude.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="gtatitude">
+        <div class="content">
+          <div class="text">
+            <h1 class="title">СПАСИБО ЗА ЗАЯВКУ</h1>
+            <h2 class="subtitle">В ближайшие дни мы с Вами свяжемся!</h2>
+          </div>
+          <a class="button" th:href="@{/public}">ОБРАТНО НА ГЛАВНУЮ</a>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

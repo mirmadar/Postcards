@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.container{
+  max-width: 1220px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+.gratitude{
+  position: relative;
+  height: 100%;
+}
+
+.button{
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  padding: 14px 40px 15px;
+  margin-top: 20px;
+  background-color: #4A4A4A;
+  color: white;
+  transition: all .5s;
+}
+
+.button:hover{
+  color: #4A4A4A;
+  background-color: white;
+}
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
