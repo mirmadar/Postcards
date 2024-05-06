@@ -1,25 +1,38 @@
 version: '3'
 services:
   db:
-    image: mysql:latest
+    image: 'mirmad/postcards:db'
+    build:
+      context: .
+      dockerfile: ./database/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: postcards
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
     volumes:
-      - ./database/:/docker-entrypoint-initdb.d/
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
   app:
-    image: mirmad/postcards:app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      - db
+    image: 'mirmad/postcards:app'
     ports:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/postcards
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
+    driver: bridge
