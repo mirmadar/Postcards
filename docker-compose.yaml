@@ -22,6 +22,9 @@ services:
     ports:
       - "8080:8080"
     environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/postcards
+#      SPRING_DATASOURCE_USERNAME: root
+#      SPRING_DATASOURCE_PASSWORD: Z12X34D8s
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/postcards
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
